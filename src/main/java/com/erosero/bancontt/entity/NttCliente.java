@@ -13,12 +13,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ntt_cliente")
+//@PrimaryKeyJoinColumn(referencedColumnName = "pers_id")
 public class NttCliente extends NttPersona implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cli_id")
-    private Integer cliId;
 
     @Column(name = "cli_password")
     private String cliPassword;
@@ -31,14 +28,6 @@ public class NttCliente extends NttPersona implements Serializable {
     private List<NttCuenta> nttCuenta;
 
     public NttCliente() {
-    }
-
-    public Integer getCliId() {
-        return cliId;
-    }
-
-    public void setCliId(Integer cliId) {
-        this.cliId = cliId;
     }
 
     public String getCliPassword() {

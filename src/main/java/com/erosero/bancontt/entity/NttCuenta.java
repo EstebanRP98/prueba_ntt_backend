@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 
@@ -35,12 +36,12 @@ public class NttCuenta implements Serializable {
     private String cuenNumero;
 
     @Column(name = "cuen_saldo_inicial")
-    private Double cuenSaldoInicial;
+    private BigDecimal cuenSaldoInicial;
 
     @Column(name = "cuen_estado")
     private boolean cuenEstado;
 
-    @JoinColumn(name = "cuen_cli_id", referencedColumnName = "cli_id")
+    @JoinColumn(name = "cuen_cli_id", referencedColumnName = "pers_id")
     @ManyToOne(optional = false)
     private NttCliente cuenCliId;
 
@@ -71,11 +72,11 @@ public class NttCuenta implements Serializable {
         this.cuenNumero = cuenNumero;
     }
 
-    public Double getCuenSaldoInicial() {
+    public BigDecimal getCuenSaldoInicial() {
         return cuenSaldoInicial;
     }
 
-    public void setCuenSaldoInicial(Double cuenSaldoInicial) {
+    public void setCuenSaldoInicial(BigDecimal cuenSaldoInicial) {
         this.cuenSaldoInicial = cuenSaldoInicial;
     }
 

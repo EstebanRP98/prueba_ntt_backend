@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -25,10 +26,10 @@ public class NttMovimiento implements Serializable {
     private Date movFecha;
 
     @Column(name = "mov_valor")
-    private Double movValor;
+    private BigDecimal movValor;
 
     @Column(name = "mov_saldo")
-    private Double movSaldo;
+    private BigDecimal movSaldo;
 
     @JoinColumn(name = "mov_cuen_id", referencedColumnName = "cuen_id")
     @ManyToOne(optional = false)
@@ -57,19 +58,19 @@ public class NttMovimiento implements Serializable {
         this.movFecha = movFecha;
     }
 
-    public Double getMovValor() {
+    public BigDecimal getMovValor() {
         return movValor;
     }
 
-    public void setMovValor(Double movValor) {
+    public void setMovValor(BigDecimal movValor) {
         this.movValor = movValor;
     }
 
-    public Double getMovSaldo() {
+    public BigDecimal getMovSaldo() {
         return movSaldo;
     }
 
-    public void setMovSaldo(Double movSaldo) {
+    public void setMovSaldo(BigDecimal movSaldo) {
         this.movSaldo = movSaldo;
     }
 
