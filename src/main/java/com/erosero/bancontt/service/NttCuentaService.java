@@ -44,7 +44,7 @@ public class NttCuentaService {
         nttCuentaGuardada.setCuenEstado(nttCuenta.isCuenEstado());
         nttCuentaGuardada.setCuenSaldoInicial(nttCuenta.getCuenSaldoInicial() != null ? nttCuenta.getCuenSaldoInicial() : null);
         nttCuentaGuardada.setCuenTipoCuenta(nttCuenta.getCuenTipoCuenta() != null ? encontrarTipoCuentaPorId(nttCuenta.getCuenTipoCuenta().getTpcId()) : null);
-        nttCuentaGuardada.setCuenCliId(nttClienteService.encontrarClientePorId(nttCuentaGuardada.getCuenCliId() != null ? nttCuentaGuardada.getCuenCliId().getPersId() : null));
+        nttCuentaGuardada.setCuenCliId(nttCuenta.getCuenCliId() != null ? nttClienteService.encontrarClientePorId(nttCuenta.getCuenCliId().getPersId()) : null);
 
         return nttCuentaRepository.save(nttCuentaGuardada);
     }

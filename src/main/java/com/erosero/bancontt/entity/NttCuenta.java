@@ -4,6 +4,7 @@
  */
 package com.erosero.bancontt.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -41,7 +42,7 @@ public class NttCuenta implements Serializable {
     @Column(name = "cuen_estado")
     private boolean cuenEstado;
 
-    @JoinColumn(name = "cuen_cli_id", referencedColumnName = "pers_id")
+    @JoinColumn(name = "cuen_cli_id", referencedColumnName = "cli_id")
     @ManyToOne(optional = false)
     private NttCliente cuenCliId;
 
@@ -51,6 +52,7 @@ public class NttCuenta implements Serializable {
 
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "movCuenId", fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonIgnore
     private List<NttMovimiento> nttMovimiento;
 
     public NttCuenta() {
@@ -91,6 +93,8 @@ public class NttCuenta implements Serializable {
     public NttCliente getCuenCliId() {
         return cuenCliId;
     }
+
+
 
     public void setCuenCliId(NttCliente cuenCliId) {
         this.cuenCliId = cuenCliId;

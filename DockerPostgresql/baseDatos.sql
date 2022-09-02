@@ -4,7 +4,7 @@ create table NTT_PERSONA (
 	"pers_nombre" varchar(150) not null,
 	"pers_genero" varchar(255) not null,
 	"pers_identificacion" varchar(10) not null,
-	"pers_edad" int not null,
+	"pers_fecha_nacimiento" date not null,
 	"pers_direccion" varchar(255) not null,
 	"pers_telefono" varchar(50) not null,
 	primary key ("pers_id"),
@@ -14,8 +14,8 @@ create table NTT_PERSONA (
 
 drop table if exists NTT_CLIENTE;
 create table NTT_CLIENTE (
-	"cli_id" serial not null,
-	"cli_contraseña" varchar(150) not null,
+    "cli_id" serial not null,
+	"cli_password" varchar(150) not null,
 	"cli_estado" BOOLEAN not null,
 	primary key ("cli_id")
 ) INHERITS (NTT_PERSONA);
@@ -32,7 +32,7 @@ create table NTT_CUENTA (
 	"cuen_id" serial not null,
 	"cuen_numero" varchar(150) not null,
 	"cuen_tipo_cuenta" int not null,
-	"cuen_saldo_inicial" varchar(10) not null,
+	"cuen_saldo_inicial" numeric(12,2) not null,
 	"cuen_estado" boolean not null,
 	"cuen_cli_id" int not null,
 	primary key ("cuen_id"),
@@ -60,10 +60,10 @@ create table NTT_TIPO_MOVIMIENTO (
 drop table if exists NTT_MOVIMIENTO;
 create table NTT_MOVIMIENTO (
 	"mov_id" serial not null,
-	"mov_fecha" varchar(150) not null,
+	"mov_fecha" date not null,
 	"mov_tipo_movimiento" int not null,
-	"mov_valor" varchar(10) not null,
-	"mov_saldo" boolean not null,
+	"mov_valor" numeric(12,2) not null,
+	"mov_saldo" numeric(12,2) not null,
 	"mov_cuen_id" int not null,
 	primary key ("mov_id"),
 	constraint "fk_movimiento_cuenta"
@@ -79,4 +79,10 @@ create table NTT_MOVIMIENTO (
 );
 
 
+drop table if exists NTT_MOVIMIENTO;
+drop table if exists NTT_TIPO_MOVIMIENTO;
+drop table if exists NTT_CUENTA;
+drop table if exists NTT_TIPO_CUENTA;
+drop table if exists NTT_CLIENTE;
+drop table if exists NTT_PERSONA;
 

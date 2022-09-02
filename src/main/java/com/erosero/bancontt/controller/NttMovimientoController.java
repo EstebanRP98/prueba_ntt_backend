@@ -23,7 +23,7 @@ public class NttMovimientoController {
     @Autowired
     NttMovimientoService nttMovimientoService;
 
-    @RequestMapping(value = "/encontrarCuentaPorId/{id}", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/encontrarMovimientoPorFecha")
     public ResponseEntity<GenericResponse> encontrarMovimientoPorFecha(@RequestParam("fechaInicial") Date fechaInicial,
                                                                        @RequestParam("fechaFinal") Date fechaFinal) {
         GenericResponse<List<ReporteMovimientoDto>> nttMovimientoGR = new GenericResponse<>();
@@ -39,6 +39,21 @@ public class NttMovimientoController {
         return new ResponseEntity<>(nttMovimientoGR, HttpStatus.OK);
     }
 
+
+    @RequestMapping(value = "/crearMovimiento", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<GenericResponse> crearMovimiento(@RequestBody NttMovimiento nttMovimiento) {
+        GenericResponse<NttMovimiento> nttMovimientoGR = new GenericResponse<>();
+        try {
+            NttMovimiento movimiento = nttMovimientoService.guardarMovimiento(nttMovimiento);
+            nttMovimientoGR.setObject(movimiento);
+            nttMovimientoGR.setStatus(ParametersApp.SUCCESSFUL.value());
+        } catch (Exception e) {
+            nttMovimientoGR.setObject(null);
+            nttMovimientoGR.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+            nttMovimientoGR.saveMessage(UtilsApi.getProcessExceptionMessage(e, 500));
+        }
+        return new ResponseEntity<>(nttMovimientoGR, HttpStatus.OK);
+    }
 
 
 }

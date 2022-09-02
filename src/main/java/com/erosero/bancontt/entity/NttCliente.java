@@ -4,6 +4,7 @@
  */
 package com.erosero.bancontt.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.io.Serializable;
@@ -13,9 +14,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ntt_cliente")
-//@PrimaryKeyJoinColumn(referencedColumnName = "pers_id")
+@PrimaryKeyJoinColumn(name = "cli_id",referencedColumnName = "pers_id")
 public class NttCliente extends NttPersona implements Serializable {
-
 
     @Column(name = "cli_password")
     private String cliPassword;
@@ -23,7 +23,7 @@ public class NttCliente extends NttPersona implements Serializable {
     @Column(name = "cli_estado")
     private boolean cliEstado;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenCliId", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<NttCuenta> nttCuenta;
 

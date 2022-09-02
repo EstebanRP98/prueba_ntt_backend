@@ -1,5 +1,6 @@
 package com.erosero.bancontt.service;
 
+import com.erosero.bancontt.dto.NttClienteDto;
 import com.erosero.bancontt.entity.NttCliente;
 import com.erosero.bancontt.repository.NttClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,10 @@ public class NttClienteService {
         return nttCliente.get();
     }
 
-    public NttCliente guardarCliente(NttCliente nttCliente) throws Exception {
+    public NttCliente guardarCliente(NttClienteDto nttCliente) throws Exception {
         NttCliente nttClienteGuardado = new NttCliente();
 
-        nttClienteGuardado.setCliEstado(nttCliente.isCliEstado());
+        nttClienteGuardado.setCliEstado(true);
         nttClienteGuardado.setCliPassword(nttCliente.getCliPassword() != null ? nttCliente.getCliPassword() : null);
         nttClienteGuardado.setPersDireccion(nttCliente.getPersDireccion() != null ?
                 nttCliente.getPersDireccion() : null);
@@ -43,7 +44,7 @@ public class NttClienteService {
         return nttClienteRepository.save(nttClienteGuardado);
     }
 
-    public NttCliente actualizarCuenta(Integer id, NttCliente nttClienteActualizar) throws Exception {
+    public NttCliente actualizarCliente(Integer id, NttClienteDto nttClienteActualizar) throws Exception {
         Optional<NttCliente> cliente = nttClienteRepository.findById(id);
 
         if (!cliente.isPresent())
