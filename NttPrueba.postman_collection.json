@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "d9065fee-50d6-490c-993b-89b696d7658d",
+		"name": "NttPrueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "encontrarClienteId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/nttBanco/clientes/encontrarClientePorId/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"clientes",
+								"encontrarClientePorId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearCliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"persNombre\": \"Diego\",\r\n        \"persGenero\": \"masculino\",\r\n        \"persIdentificacion\": \"1708306046\",\r\n        \"persFechaNacimiento\": \"1991-05-22\",\r\n        \"persDireccion\": \"remigio\",\r\n        \"persTelefono\": \"0935467471\",\r\n        \"cliPassword\": \"moncho\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8082/api/nttBanco/clientes/crearCliente",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"clientes",
+								"crearCliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarClientePorId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/nttBanco/clientes/eliminarClientePorId/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"clientes",
+								"eliminarClientePorId",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarCliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"persNombre\": \"Diego\",\r\n        \"persGenero\": \"masculino\",\r\n        \"persIdentificacion\": \"1708306046\",\r\n        \"persFechaNacimiento\": \"1991-05-22\",\r\n        \"persDireccion\": \"remigio\",\r\n        \"persTelefono\": \"0935467471\",\r\n        \"cliPassword\": \"LOBO\",\r\n        \"cliEstado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/nttBanco/clientes/actualizarCliente/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"clientes",
+								"actualizarCliente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuenta",
+			"item": [
+				{
+					"name": "encontrarCuentaPorId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/nttBanco/cuentas/encontrarCuentaPorId/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"cuentas",
+								"encontrarCuentaPorId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"cuenNumero\": \"2539187665\",\r\n        \"cuenSaldoInicial\": 200.00,\r\n        \"cuenEstado\": true,\r\n        \"cuenCliId\":  1,\r\n        \"cuenTipoCuenta\": 1,\r\n        \"nttMovimiento\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/nttBanco/cuentas/crearCuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"cuentas",
+								"crearCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarCuenta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"cuenNumero\": \"2539187665\",\r\n        \"cuenSaldoInicial\": 200.00,\r\n        \"cuenEstado\": true,\r\n        \"cuenCliId\":  2,\r\n        \"cuenTipoCuenta\": 1,\r\n        \"nttMovimiento\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/nttBanco/cuentas/actualizarCuenta/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"cuentas",
+								"actualizarCuenta",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarCuentaPorId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/nttBanco/cuentas/eliminarCuentaPorId/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"cuentas",
+								"eliminarCuentaPorId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movimiento",
+			"item": [
+				{
+					"name": "crearMovimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"movValor\": 300.00,\r\n        \"movCuenId\":  1,\r\n        \"movTipoMovimiento\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/nttBanco/movimientos/crearMovimiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"movimientos",
+								"crearMovimiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "encontrarMovimientoPorFecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/nttBanco/movimientos/encontrarMovimientoPorFecha?fechaInicial=01-09-2022&fechaFinal=03-09-2022&clienteId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"nttBanco",
+								"movimientos",
+								"encontrarMovimientoPorFecha"
+							],
+							"query": [
+								{
+									"key": "fechaInicial",
+									"value": "01-09-2022"
+								},
+								{
+									"key": "fechaFinal",
+									"value": "03-09-2022"
+								},
+								{
+									"key": "clienteId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -29,7 +29,7 @@ public class NttPersona implements Serializable {
 
     @NotNull(message = "El nombre es requerido")
     @Column(name = "pers_nombre")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "El nombre debe tener solo letras")
+    @Pattern(regexp = "^[A-Za-z0-9\\s]+$", message = "El nombre debe tener solo letras")
     private String persNombre;
 
     @Column(name = "pers_genero")
