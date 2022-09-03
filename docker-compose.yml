@@ -4,7 +4,7 @@ services:
   db:
     build:
       context: ./DockerPostgresql
-      dockerfile: DockerPostgresql/db.Dockerfile
+      dockerfile: db.Dockerfile
     container_name: db
     hostname: db
     environment:
@@ -17,7 +17,7 @@ services:
     image: springboot-docker-container
     container_name: springboot-docker-container
     ports:
-      - 8080:8080
+      - 8082:8082
     build:
       context: ./
       dockerfile: Dockerfile
