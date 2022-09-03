@@ -4,6 +4,7 @@
  */
 package com.erosero.bancontt.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -50,9 +51,8 @@ public class NttCuenta implements Serializable {
     @ManyToOne(optional = false)
     private NttTipoCuenta cuenTipoCuenta;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "movCuenId", fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonIgnore
     private List<NttMovimiento> nttMovimiento;
 
     public NttCuenta() {

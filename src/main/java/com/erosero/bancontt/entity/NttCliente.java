@@ -4,6 +4,7 @@
  */
 package com.erosero.bancontt.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -23,11 +24,12 @@ public class NttCliente extends NttPersona implements Serializable {
     @Column(name = "cli_estado")
     private boolean cliEstado;
 
-    @JsonIgnore
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenCliId", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<NttCuenta> nttCuenta;
 
     public NttCliente() {
+        super();
     }
 
     public String getCliPassword() {

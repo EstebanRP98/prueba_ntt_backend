@@ -18,7 +18,7 @@ create table NTT_CLIENTE (
 	"cli_password" varchar(150) not null,
 	"cli_estado" BOOLEAN not null,
 	primary key ("cli_id")
-) INHERITS (NTT_PERSONA);
+);
 
 drop table if exists NTT_TIPO_CUENTA;
 create table NTT_TIPO_CUENTA (
@@ -64,6 +64,7 @@ create table NTT_MOVIMIENTO (
 	"mov_tipo_movimiento" int not null,
 	"mov_valor" numeric(12,2) not null,
 	"mov_saldo" numeric(12,2) not null,
+	"mov_saldo_inicial" numeric(12,2) not null,
 	"mov_cuen_id" int not null,
 	primary key ("mov_id"),
 	constraint "fk_movimiento_cuenta"
@@ -78,11 +79,8 @@ create table NTT_MOVIMIENTO (
 		on update no action
 );
 
+INSERT INTO public.ntt_tipo_cuenta (tpc_id, tpc_descripcion) VALUES (1, 'AHORROS');
+INSERT INTO public.ntt_tipo_cuenta (tpc_id, tpc_descripcion) VALUES (2, 'CORRIENTE');
 
-drop table if exists NTT_MOVIMIENTO;
-drop table if exists NTT_TIPO_MOVIMIENTO;
-drop table if exists NTT_CUENTA;
-drop table if exists NTT_TIPO_CUENTA;
-drop table if exists NTT_CLIENTE;
-drop table if exists NTT_PERSONA;
-
+INSERT INTO public.ntt_tipo_movimiento (tpm_id, tpm_descripcion) VALUES (1, 'RETIRO');
+INSERT INTO public.ntt_tipo_movimiento (tpm_id, tpm_descripcion) VALUES (2, 'DEPOSITO');

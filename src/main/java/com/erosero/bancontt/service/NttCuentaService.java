@@ -1,5 +1,6 @@
 package com.erosero.bancontt.service;
 
+import com.erosero.bancontt.dto.NttCuentaDto;
 import com.erosero.bancontt.entity.NttCuenta;
 import com.erosero.bancontt.entity.NttTipoCuenta;
 import com.erosero.bancontt.repository.NttCuentaRepository;
@@ -37,19 +38,19 @@ public class NttCuentaService {
         return nttCuenta.get();
     }
 
-    public NttCuenta guardarCuenta(NttCuenta nttCuenta) throws Exception {
+    public NttCuenta guardarCuenta(NttCuentaDto nttCuenta) throws Exception {
         NttCuenta nttCuentaGuardada = new NttCuenta();
 
         nttCuentaGuardada.setCuenNumero(nttCuenta.getCuenNumero() != null ? nttCuenta.getCuenNumero() : null);
         nttCuentaGuardada.setCuenEstado(nttCuenta.isCuenEstado());
         nttCuentaGuardada.setCuenSaldoInicial(nttCuenta.getCuenSaldoInicial() != null ? nttCuenta.getCuenSaldoInicial() : null);
-        nttCuentaGuardada.setCuenTipoCuenta(nttCuenta.getCuenTipoCuenta() != null ? encontrarTipoCuentaPorId(nttCuenta.getCuenTipoCuenta().getTpcId()) : null);
-        nttCuentaGuardada.setCuenCliId(nttCuenta.getCuenCliId() != null ? nttClienteService.encontrarClientePorId(nttCuenta.getCuenCliId().getPersId()) : null);
+        nttCuentaGuardada.setCuenTipoCuenta(nttCuenta.getCuenTipoCuenta() != null ? encontrarTipoCuentaPorId(nttCuenta.getCuenTipoCuenta()) : null);
+        nttCuentaGuardada.setCuenCliId(nttCuenta.getCuenCliId() != null ? nttClienteService.encontrarClientePorId(nttCuenta.getCuenCliId()) : null);
 
         return nttCuentaRepository.save(nttCuentaGuardada);
     }
 
-    public NttCuenta actualizarCuenta(Integer id, NttCuenta nttCuentaActualizar) throws Exception {
+    public NttCuenta actualizarCuenta(Integer id, NttCuentaDto nttCuentaActualizar) throws Exception {
         Optional<NttCuenta> cuenta = nttCuentaRepository.findById(id);
 
         if (!cuenta.isPresent())
@@ -58,8 +59,8 @@ public class NttCuentaService {
         cuenta.get().setCuenNumero(nttCuentaActualizar.getCuenNumero() != null ? nttCuentaActualizar.getCuenNumero() : cuenta.get().getCuenNumero());
         cuenta.get().setCuenEstado(nttCuentaActualizar.isCuenEstado());
         cuenta.get().setCuenSaldoInicial(nttCuentaActualizar.getCuenSaldoInicial() != null ? nttCuentaActualizar.getCuenSaldoInicial() : cuenta.get().getCuenSaldoInicial());
-        cuenta.get().setCuenTipoCuenta(nttCuentaActualizar.getCuenTipoCuenta() != null ? encontrarTipoCuentaPorId(nttCuentaActualizar.getCuenTipoCuenta().getTpcId()) : cuenta.get().getCuenTipoCuenta());
-        cuenta.get().setCuenCliId(nttCuentaActualizar.getCuenCliId() != null ? nttClienteService.encontrarClientePorId(nttCuentaActualizar.getCuenCliId().getPersId()) : cuenta.get().getCuenCliId());
+        cuenta.get().setCuenTipoCuenta(nttCuentaActualizar.getCuenTipoCuenta() != null ? encontrarTipoCuentaPorId(nttCuentaActualizar.getCuenTipoCuenta()) : cuenta.get().getCuenTipoCuenta());
+        cuenta.get().setCuenCliId(nttCuentaActualizar.getCuenCliId() != null ? nttClienteService.encontrarClientePorId(nttCuentaActualizar.getCuenCliId()) : cuenta.get().getCuenCliId());
 
         return nttCuentaRepository.save(cuenta.get());
     }
@@ -69,8 +70,8 @@ public class NttCuentaService {
 
         if (!nttCuenta.isPresent())
             throw new Exception("La Cuenta que intenta eliminar no existe");
-
-        nttCuentaRepository.delete(nttCuenta.get());
+        nttCuenta.get().setCuenEstado(false);
+        nttCuentaRepository.save(nttCuenta.get());
         return nttCuenta.get();
     }
 

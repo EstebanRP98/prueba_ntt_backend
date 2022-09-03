@@ -1,6 +1,7 @@
 package com.erosero.bancontt.controller;
 
 
+import com.erosero.bancontt.dto.NttCuentaDto;
 import com.erosero.bancontt.entity.NttCliente;
 import com.erosero.bancontt.entity.NttCuenta;
 import com.erosero.bancontt.service.NttCuentaService;
@@ -35,10 +36,10 @@ public class NttCuentaController {
     }
 
     @PostMapping(value = "/crearCuenta")
-    public ResponseEntity<GenericResponse> crearCuenta(@RequestBody NttCuenta nttCuenta) {
+    public ResponseEntity<GenericResponse> crearCuenta(@RequestBody NttCuentaDto nttCuentaDto) {
         GenericResponse<NttCuenta> nttCuentaGR = new GenericResponse<>();
         try {
-            NttCuenta nttCuentaGuardado = nttCuentaService.guardarCuenta(nttCuenta);
+            NttCuenta nttCuentaGuardado = nttCuentaService.guardarCuenta(nttCuentaDto);
             nttCuentaGR.setObject(nttCuentaGuardado);
             nttCuentaGR.setStatus(ParametersApp.SUCCESSFUL.value());
         } catch (Exception e) {
@@ -49,9 +50,9 @@ public class NttCuentaController {
         return new ResponseEntity<>(nttCuentaGR, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/actualizarCuenta")
+    @PutMapping(value = "/actualizarCuenta/{id}")
     public ResponseEntity<GenericResponse> actualizarCuenta(@PathVariable(value = "id") Integer cuentaId,
-                                                            @RequestBody NttCuenta nttCuenta) {
+                                                            @RequestBody NttCuentaDto nttCuenta) {
         GenericResponse<NttCuenta> nttCuentaGR = new GenericResponse<>();
         try {
             NttCuenta nttCuentaActualizada = nttCuentaService.actualizarCuenta(cuentaId, nttCuenta);
@@ -65,7 +66,7 @@ public class NttCuentaController {
         return new ResponseEntity<>(nttCuentaGR, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/eliminarCuentaPorId")
+    @DeleteMapping(value = "/eliminarCuentaPorId/{id}")
     public ResponseEntity<GenericResponse> eliminarCuenta(@PathVariable(value = "id") Integer cuentaId) {
         GenericResponse<NttCuenta> nttCuentaGR = new GenericResponse<>();
         try {

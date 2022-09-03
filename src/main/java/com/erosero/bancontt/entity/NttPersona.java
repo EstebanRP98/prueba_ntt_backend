@@ -5,6 +5,7 @@
 package com.erosero.bancontt.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Data
 @Entity
 @Table(name = "ntt_persona")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -53,7 +55,9 @@ public class NttPersona implements Serializable {
     private String persTelefono;
 
 
-    public NttPersona() {}
+    public NttPersona() {
+        super();
+    }
 
     public Integer getPersId() {
         return persId;

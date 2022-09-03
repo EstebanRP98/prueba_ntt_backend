@@ -13,7 +13,7 @@ public interface NttMovimientoRepository extends JpaRepository<NttMovimiento, In
 
     @Query(value = "select m " +
             "from NttMovimiento m " +
-            "where m.movFecha between :fechaInicial and :fechaFinal ")
-    List<NttMovimiento> encontrarMovimientosPorFechas(Date fechaInicial, Date fechaFinal);
+            "where m.movFecha between :fechaInicial and :fechaFinal and m.movCuenId.cuenCliId.persId=:clienteId")
+    List<NttMovimiento> encontrarMovimientosPorFechas(Date fechaInicial, Date fechaFinal, Integer clienteId);
 
 }

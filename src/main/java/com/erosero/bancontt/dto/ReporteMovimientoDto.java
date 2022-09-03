@@ -12,8 +12,9 @@ public class ReporteMovimientoDto {
     private String cliente;
     private String numeroCuenta;
     private String tipoMovimiento;
-    private BigDecimal saldo;
+    private BigDecimal saldoInicial;
     private BigDecimal movimiento;
+    private BigDecimal saldo;
     private Boolean estadoCuenta;
 
     public Date getFechaMovimiento() {
@@ -22,6 +23,14 @@ public class ReporteMovimientoDto {
 
     public void setFechaMovimiento(Date fechaMovimiento) {
         this.fechaMovimiento = fechaMovimiento;
+    }
+
+    public BigDecimal getSaldoInicial() {
+        return saldoInicial;
+    }
+
+    public void setSaldoInicial(BigDecimal saldoInicial) {
+        this.saldoInicial = saldoInicial;
     }
 
     public String getCliente() {

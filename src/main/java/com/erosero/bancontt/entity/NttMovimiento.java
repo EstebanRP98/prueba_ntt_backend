@@ -4,6 +4,7 @@
  */
 package com.erosero.bancontt.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -31,6 +32,8 @@ public class NttMovimiento implements Serializable {
     @Column(name = "mov_saldo")
     private BigDecimal movSaldo;
 
+    @Column(name = "mov_saldo_inicial")
+    private BigDecimal movSaldoInicial;
     @JoinColumn(name = "mov_cuen_id", referencedColumnName = "cuen_id")
     @ManyToOne(optional = false)
     private NttCuenta movCuenId;
@@ -88,5 +91,13 @@ public class NttMovimiento implements Serializable {
 
     public void setMovTipoMovimiento(NttTipoMovimiento movTipoMovimiento) {
         this.movTipoMovimiento = movTipoMovimiento;
+    }
+
+    public BigDecimal getMovSaldoInicial() {
+        return movSaldoInicial;
+    }
+
+    public void setMovSaldoInicial(BigDecimal movSaldoInicial) {
+        this.movSaldoInicial = movSaldoInicial;
     }
 }
