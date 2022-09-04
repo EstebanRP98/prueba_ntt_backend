@@ -22,6 +22,10 @@ public class NttCuentaService {
     @Autowired
     NttClienteService nttClienteService;
 
+    public NttCuentaService(NttCuentaRepository nttCuentaRepository) {
+        this.nttCuentaRepository = nttCuentaRepository;
+    }
+
     public NttTipoCuenta encontrarTipoCuentaPorId(Integer tipoCuentaId) throws Exception {
         Optional<NttTipoCuenta> nttTipoCuenta = nttTipoCuentaRepository.findById(tipoCuentaId);
         if (!nttTipoCuenta.isPresent()) {

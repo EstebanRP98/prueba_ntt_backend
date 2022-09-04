@@ -45,6 +45,17 @@ public class NttMovimiento implements Serializable {
     public NttMovimiento() {
     }
 
+
+    public NttMovimiento(Integer movId, Date movFecha, BigDecimal movValor, BigDecimal movSaldo, BigDecimal movSaldoInicial, NttCuenta movCuenId, NttTipoMovimiento movTipoMovimiento) {
+        this.movId = movId;
+        this.movFecha = movFecha;
+        this.movValor = movValor;
+        this.movSaldo = movSaldo;
+        this.movSaldoInicial = movSaldoInicial;
+        this.movCuenId = movCuenId;
+        this.movTipoMovimiento = movTipoMovimiento;
+    }
+
     public Integer getMovId() {
         return movId;
     }

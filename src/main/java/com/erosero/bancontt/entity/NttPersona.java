@@ -54,6 +54,15 @@ public class NttPersona implements Serializable {
     @Pattern(regexp = "^[0-9]{10}$", message = "El telefono debe tener 10 digitos")
     private String persTelefono;
 
+    public NttPersona(Integer persId, String persNombre, String persGenero, String persIdentificacion, Date persFechaNacimiento, String persDireccion, String persTelefono) {
+        this.persId = persId;
+        this.persNombre = persNombre;
+        this.persGenero = persGenero;
+        this.persIdentificacion = persIdentificacion;
+        this.persFechaNacimiento = persFechaNacimiento;
+        this.persDireccion = persDireccion;
+        this.persTelefono = persTelefono;
+    }
 
     public NttPersona() {
         super();

@@ -58,6 +58,23 @@ public class NttCuenta implements Serializable {
     public NttCuenta() {
     }
 
+    public NttCuenta(Integer cuenId, String cuenNumero, BigDecimal cuenSaldoInicial, boolean cuenEstado) {
+        this.cuenId = cuenId;
+        this.cuenNumero = cuenNumero;
+        this.cuenSaldoInicial = cuenSaldoInicial;
+        this.cuenEstado = cuenEstado;
+    }
+
+    public NttCuenta(Integer cuenId, String cuenNumero, BigDecimal cuenSaldoInicial, boolean cuenEstado, NttCliente cuenCliId, NttTipoCuenta cuenTipoCuenta, List<NttMovimiento> nttMovimiento) {
+        this.cuenId = cuenId;
+        this.cuenNumero = cuenNumero;
+        this.cuenSaldoInicial = cuenSaldoInicial;
+        this.cuenEstado = cuenEstado;
+        this.cuenCliId = cuenCliId;
+        this.cuenTipoCuenta = cuenTipoCuenta;
+        this.nttMovimiento = nttMovimiento;
+    }
+
     public Integer getCuenId() {
         return cuenId;
     }

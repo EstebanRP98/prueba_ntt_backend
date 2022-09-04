@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
@@ -30,6 +31,19 @@ public class NttCliente extends NttPersona implements Serializable {
 
     public NttCliente() {
         super();
+    }
+
+    public NttCliente(Integer persId, String persNombre, String persGenero, String persIdentificacion, Date persFechaNacimiento, String persDireccion, String persTelefono, String cliPassword, boolean cliEstado, List<NttCuenta> nttCuenta) {
+        super(persId, persNombre, persGenero, persIdentificacion, persFechaNacimiento, persDireccion, persTelefono);
+        this.cliPassword = cliPassword;
+        this.cliEstado = cliEstado;
+        this.nttCuenta = nttCuenta;
+    }
+
+    public NttCliente(String cliPassword, boolean cliEstado, List<NttCuenta> nttCuenta) {
+        this.cliPassword = cliPassword;
+        this.cliEstado = cliEstado;
+        this.nttCuenta = nttCuenta;
     }
 
     public String getCliPassword() {
