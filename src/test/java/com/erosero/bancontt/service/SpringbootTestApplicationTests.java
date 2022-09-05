@@ -11,19 +11,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class SpringbootTestApplicationTests {
 
-    NttCuentaRepository nttCuentaRepository;
-    NttCuentaService nttCuentaService;
-
-    @BeforeEach
-    void setUp() {
-        nttCuentaRepository = mock(NttCuentaRepository.class);
-        nttCuentaService = new NttCuentaService(nttCuentaRepository);
-    }
 
     @Test
     void contextLoad() throws Exception {
-        NttCuenta nttCuenta = nttCuentaService.encontrarCuentaPorId(1);
-        when(nttCuentaService.encontrarCuentaPorId(1)).thenReturn(Datos.cuenta);
     }
 
 }

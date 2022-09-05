@@ -32,14 +32,14 @@ public class IntegracionJpaTest {
 
     @Test
     void encontrarCuentaPorId(){
-       Optional<NttCuenta> nttCuenta = nttCuentaRepository.findById(1);
+       Optional<NttCuenta> nttCuenta = nttCuentaRepository.findById(99);
        assertTrue(nttCuenta.isPresent());
        assertEquals("2539187665", nttCuenta.get().getCuenNumero());
     }
 
     @Test
     void saveCuenta(){
-        Optional<NttCliente> nttCliente = nttClienteRepository.findById(1);
+        Optional<NttCliente> nttCliente = nttClienteRepository.findById(99);
         Optional<NttTipoCuenta> nttTipoCuenta = nttTipoCuentaRepository.findById(1);
         NttCuenta cuenta = new NttCuenta(2, "2539187668", new BigDecimal("200.00"),
                 true, nttCliente.get(), nttTipoCuenta.get() , null);
@@ -53,15 +53,13 @@ public class IntegracionJpaTest {
 
     @Test
     void encontrarClientePorId(){
-        Optional<NttCliente> nttCliente = nttClienteRepository.findById(1);
+        Optional<NttCliente> nttCliente = nttClienteRepository.findById(99);
         assertTrue(nttCliente.isPresent());
         assertEquals("1708306046", nttCliente.get().getPersIdentificacion());
     }
 
     @Test
     void saveCliente(){
-        Optional<NttCliente> nttCliente = nttClienteRepository.findById(1);
-
         NttCliente cliente = new NttCliente(2, "Juan", "masculino", "1726442906", new Date(), "remigio",
                 "0935467472","pass", true, null );
         NttCliente nttClienteGuardada = nttClienteRepository.save(cliente);
@@ -81,7 +79,7 @@ public class IntegracionJpaTest {
 
     @Test
     void saveMovimiento(){
-        Optional<NttCuenta> nttCuenta = nttCuentaRepository.findById(1);
+        Optional<NttCuenta> nttCuenta = nttCuentaRepository.findById(99);
         Optional<NttTipoMovimiento> nttTipoMovimiento = nttTipoMovimientoRepository.findById(1);
         NttMovimiento movimiento = new NttMovimiento(1 , new Date(), new BigDecimal("200"), new BigDecimal("200"), new BigDecimal("0"), nttCuenta.get(), nttTipoMovimiento.get());
         NttMovimiento nttMovimientoGuardada = nttMovimientoRepository.save(movimiento);
