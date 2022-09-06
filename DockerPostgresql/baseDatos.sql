@@ -87,4 +87,4 @@ INSERT INTO public.ntt_tipo_movimiento (tpm_id, tpm_descripcion) VALUES (2, 'DEP
 
 INSERT INTO public.ntt_persona (pers_id, pers_nombre, pers_genero, pers_identificacion, pers_fecha_nacimiento, pers_direccion, pers_telefono) VALUES (99, 'Diego', 'masculino', '1708306046', '1991-05-22', 'remigio', '0935467471');
 INSERT INTO public.ntt_cliente (cli_id, cli_password, cli_estado) VALUES (99, 'moncho', true);
-INSERT INTO public.ntt_cuenta (cuen_id, cuen_numero, cuen_tipo_cuenta, cuen_saldo_inicial, cuen_estado, cuen_cli_id) VALUES (99, '2539187665', 1, 200.00, true, 1);
+INSERT INTO public.ntt_cuenta (cuen_id, cuen_numero, cuen_tipo_cuenta, cuen_saldo_inicial, cuen_estado, cuen_cli_id) VALUES (99, '2539187665', 1, 200.00, true, 99);
